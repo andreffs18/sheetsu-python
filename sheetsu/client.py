@@ -32,7 +32,12 @@ class SheetsuClient(object):
         else:
             raise UnknownRequestMethod("Method: {}".format(method))
 
-        kwargs = {'data': data}
+        kwargs = {
+            'data': data,
+            'headers': {
+                "Content-Type": "application/json"
+            }
+        }
 
         r = func(url, **kwargs)
 
@@ -54,4 +59,17 @@ class SheetsuClient(object):
         if kwargs.get('limit'):
             data.update({'limit': kwargs.pop('limit')})
 
+        if kwargs.get('offset'):
+            data.update({'offset': kwargs.pop('offset')})
+
         return self._call(self.ss_id, method="get", data=data)
+
+    def search(self, **kwargs):
+        """https://docs.sheetsu.com/?shell#search-spreadsheet"""
+        return self.read(**kwargs)
+
+    def create_one(self, **kwargs):
+        """https://docs.sheetsu.com/?shell#create"""
+        # Adds one row to spreadsheet
+        data = json.dumps(kwargs)
+        return self._call(self.ss_id, method='post', data=data)
