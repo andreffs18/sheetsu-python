@@ -40,7 +40,7 @@ client = SheetsuClient("<spreadsheed_id>", api_key="<api_key>", api_secret="<api
 Sheetsu gives you the ability to use full CRUD on your Google Spreadsheet. 
  
 
-#### Read 
+### Read 
 
 More information can be found [here](https://docs.sheetsu.com/#read)
 
@@ -59,7 +59,7 @@ print(client.read(sheet="Sheet2", limit=3))
 ```
 
 
-#### Search 
+### Search 
 
 More information can be found [here](https://docs.sheetsu.com/#search-spreadsheet)
 
@@ -75,7 +75,7 @@ print(client.search(sheet="Sheet2", name="User", ignore_case=True))
 
 ```
 
-#### Create 
+### Create 
 
 
 More information can be found [here](https://docs.sheetsu.com/#create)
@@ -91,7 +91,7 @@ print(client.create_many(sheet="Sheet2", *[dict(name="onename"), dict(name="othe
 
 
 
-#### Update 
+### Update 
 
 More information can be found [here](https://docs.sheetsu.com/#update)
 
@@ -100,7 +100,7 @@ More information can be found [here](https://docs.sheetsu.com/#update)
 print(client.update(column="name", value="Peter", data=dict(score=120)))
 ````
 
-#### Delete 
+### Delete 
 
 More information can be found [here](https://docs.sheetsu.com/#delete)
 
