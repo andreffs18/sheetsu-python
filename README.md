@@ -139,6 +139,12 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/sheets
 [Sheetsu documentation sits on GitHub](https://github.com/sheetsu/docs). We would love your contributions! We want to make these docs accessible and easy to understand for everyone. Please send us Pull Requests or open issues on GitHub.
 
 
+## Changes
 
+##### [v0.1.1]
+* Added tests to all available _Resources_.
+
+##### [v0.1.0]
+* Initial working version
 
 
