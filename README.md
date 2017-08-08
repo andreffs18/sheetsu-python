@@ -40,7 +40,9 @@ client = SheetsuClient("<spreadsheed_id>", api_key="<api_key>", api_secret="<api
 Sheetsu gives you the ability to use full CRUD on your Google Spreadsheet. 
  
 
-### Read [Link to docs](https://docs.sheetsu.com/#read)
+#### Read 
+
+More information can be found [here](https://docs.sheetsu.com/#read)
 
 ```python
 # Read all available rows from default sheet
@@ -57,7 +59,9 @@ print(client.read(sheet="Sheet2", limit=3))
 ```
 
 
-### Search [Link to docs](https://docs.sheetsu.com/#search-spreadsheet)
+#### Search 
+
+More information can be found [here](https://docs.sheetsu.com/#search-spreadsheet)
 
 ```python
 # Search on default sheet for all names
@@ -71,7 +75,10 @@ print(client.search(sheet="Sheet2", name="User", ignore_case=True))
 
 ```
 
-### Create [Link to docs](https://docs.sheetsu.com/#create)
+#### Create 
+
+
+More information can be found [here](https://docs.sheetsu.com/#create)
 
 ```python
 # Create a new entry on default sheet
@@ -84,14 +91,18 @@ print(client.create_many(sheet="Sheet2", *[dict(name="onename"), dict(name="othe
 
 
 
-### Update [Link to docs](https://docs.sheetsu.com/#update)
+#### Update 
+
+More information can be found [here](https://docs.sheetsu.com/#update)
 
 ````python
 # Update on default sheet, "Peter's" score to 120
 print(client.update(column="name", value="Peter", data=dict(score=120)))
 ````
 
-### Delete [Link to docs](https://docs.sheetsu.com/#delete)
+#### Delete 
+
+More information can be found [here](https://docs.sheetsu.com/#delete)
 
 ````python
 # Delete "Peter" user from default sheet
