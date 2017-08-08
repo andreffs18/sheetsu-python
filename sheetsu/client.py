@@ -1,7 +1,8 @@
-import json
 import logging
-import requests
-from .exceptions import UnknownRequestMethod
+
+from sheetsu.core import (
+    ReadResource, SearchResource, CreateOneResource,
+    CreateManyResource, UpdateResource, DeleteResource)
 
 logger = logging.getLogger(__name__)
 
@@ -9,67 +10,30 @@ logger = logging.getLogger(__name__)
 class SheetsuClient(object):
 
     def __init__(self, spreadsheet_id, **kwargs):
-        self.sheetsu_api_url = "https://sheetsu.com/apis/v1.0/"
-        self.ss_id = spreadsheet_id
-
-    def _call(self, url, method="get", data=None):
-        """Wrapper around requests
-        :param url: end url to concatenate with Sheetsu API url
-        :param method: one of the following options:
-        :param data: optional, only for 'post' and 'put'
-        :return: requests instance"""
-
-        url = "{}{}".format(self.sheetsu_api_url, url)
-
-        if method == 'get':
-            func = requests.get
-        elif method == 'post':
-            func = requests.post
-        elif method == 'put':
-            func = requests.put
-        elif method == 'delete':
-            func = requests.delete
-        else:
-            raise UnknownRequestMethod("Method: {}".format(method))
-
-        kwargs = {
-            'data': data,
-            'headers': {
-                "Content-Type": "application/json"
-            }
-        }
-
-        r = func(url, **kwargs)
-
-        logger.debug("--{} ({})-- {} with data {}"
-                     "".format(method.upper(), r.status_code, url, data))
-        if r.status_code not in [200]:
-            logger.error("Error({}): {} for url {}"
-                         "".format(r.status_code, r.text, url))
-            return
-
-        return json.loads(r.content)
+        self.spreadsheet_id = spreadsheet_id
+        self.api_key = kwargs.pop('api_key', None)
+        self.api_secret = kwargs.pop('api_secret', None)
 
     def read(self, **kwargs):
         """https://docs.sheetsu.com/?shell#read"""
-        data = dict()
-        if kwargs.get('sheet'):
-            data.update({'sheet': kwargs.pop('sheet')})
-
-        if kwargs.get('limit'):
-            data.update({'limit': kwargs.pop('limit')})
-
-        if kwargs.get('offset'):
-            data.update({'offset': kwargs.pop('offset')})
-
-        return self._call(self.ss_id, method="get", data=data)
+        return ReadResource(self)(**kwargs)
 
     def search(self, **kwargs):
         """https://docs.sheetsu.com/?shell#search-spreadsheet"""
-        return self.read(**kwargs)
+        return SearchResource(self)(**kwargs)
 
     def create_one(self, **kwargs):
         """https://docs.sheetsu.com/?shell#create"""
-        # Adds one row to spreadsheet
-        data = json.dumps(kwargs)
-        return self._call(self.ss_id, method='post', data=data)
+        return CreateOneResource(self)(**kwargs)
+
+    def create_many(self, *args):
+        """https://docs.sheetsu.com/?shell#create"""
+        return CreateManyResource(self)(*args)
+
+    def update(self, **kwargs):
+        """https://docs.sheetsu.com/?shell#update"""
+        return UpdateResource(self)(**kwargs)
+
+    def delete(self, **kwargs):
+        """https://docs.sheetsu.com/?shell#delete"""
+        return DeleteResource(self)(**kwargs)
