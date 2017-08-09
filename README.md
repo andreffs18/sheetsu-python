@@ -125,10 +125,10 @@ Bug, issues or features are welcome in this project. Feel free to open an issue 
 
 ## Changes
 
-##### [v0.1.1]
-* Added tests to all available _Resources_.
+##### [v0.0.2]
+* Added tests to Create and Read _Resources_.
 
-##### [v0.1.0]
+##### [v0.0.1]
 * Initial working version
 
 
