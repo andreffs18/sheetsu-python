@@ -6,7 +6,11 @@ from .core import Resource
 class ReadResource(Resource):
 
     def __call__(self, **kwargs):
-        """"""
+        """
+
+        :param kwargs:
+        :return:
+        """
         data = dict()
         if kwargs.get('limit'):
             data.update({'limit': kwargs.pop('limit')})

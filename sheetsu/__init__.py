@@ -1,4 +1,4 @@
-from .exceptions import UnknownRequestMethod
-
 from .client import SheetsuClient
 
+
+__all__ = ['SheetsuClient']

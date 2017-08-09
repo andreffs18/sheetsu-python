@@ -4,7 +4,11 @@ from .core import Resource
 class DeleteResource(Resource):
 
     def __call__(self, **kwargs):
-        """"""
+        """
+
+        :param kwargs:
+        :return:
+        """
         url = self.spreadsheet_id
         if kwargs.get('sheet'):
             url += "/sheets/" + kwargs.pop('sheet')

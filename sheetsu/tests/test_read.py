@@ -10,7 +10,21 @@ class SheetsuApiReadTestCase(TestCase):
     """"""
 
     def setUp(self):
-        self.spreadsheet_id = "0eec897c6d55"
+        super(SheetsuApiReadTestCase, self).setUp()
+        self.kwargs = {
+            "spreadsheet_id": "<spreadsheet_id>",
+            "api_key": "<api_key>",
+            "api_secret": "<api_secret>"
+        }
+
+    @patch("requests.sessions.Session.request")
+    def test_read_fail(self, mock):
+        """Ensure that if request fails, that proper response is given"""
+        mock.return_value = MagicMock(status_code=400)
+
+        client = SheetsuClient(**self.kwargs)
+        response = client.read()
+        self.assertIsNone(response)
 
     @patch("requests.sessions.Session.request")
     def test_simple_read(self, mock):
@@ -24,7 +38,7 @@ class SheetsuApiReadTestCase(TestCase):
             {'id': '5', 'name': 'Stewie', 'score': '72'}
         ]))
 
-        client = SheetsuClient(self.spreadsheet_id)
+        client = SheetsuClient(**self.kwargs)
         response = client.read()
 
         self.assertEqual(response, [
@@ -46,7 +60,7 @@ class SheetsuApiReadTestCase(TestCase):
             {'id': '5', 'name': 'Stewie', 'score': '72'}
         ]))
 
-        client = SheetsuClient(self.spreadsheet_id)
+        client = SheetsuClient(**self.kwargs)
         # test with an invalid values
         for invalid_value in [-1, 0]:
             response = client.read(limit=invalid_value)
@@ -61,7 +75,7 @@ class SheetsuApiReadTestCase(TestCase):
     @patch("requests.sessions.Session.request")
     def test_read_with_limit_parameter(self, mock):
         """Ensure that READing works if limit is given"""
-        client = SheetsuClient(self.spreadsheet_id)
+        client = SheetsuClient(**self.kwargs)
 
         # test with value under the total amount of rows
         mock.return_value = MagicMock(status_code=200, content=json.dumps([
@@ -102,7 +116,7 @@ class SheetsuApiReadTestCase(TestCase):
             {'id': '5', 'name': 'Stewie', 'score': '72'}
         ]))
 
-        client = SheetsuClient(self.spreadsheet_id)
+        client = SheetsuClient(**self.kwargs)
         response = client.read(sheet="Sheet1")
         self.assertEqual(response, [
             {'id': '1', 'name': 'Peter', 'score': '42'},
@@ -121,11 +135,10 @@ class SheetsuApiReadTestCase(TestCase):
             {'id': '5', 'name': 'Stewie', 'score': '72'}
         ]))
 
-        client = SheetsuClient(self.spreadsheet_id)
+        client = SheetsuClient(**self.kwargs)
         response = client.read(offset=2)
         self.assertEqual(response, [
             {'id': '3', 'name': 'Meg', 'score': '10'},
             {'id': '4', 'name': 'Chris', 'score': '42'},
             {'id': '5', 'name': 'Stewie', 'score': '72'}
         ])
-

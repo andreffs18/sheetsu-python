@@ -6,7 +6,10 @@ from .core import Resource
 class CreateOneResource(Resource):
 
     def __call__(self, **kwargs):
-        """"""
+        """
+        :param kwargs:
+        :return:
+        """
         url = self.spreadsheet_id
 
         if kwargs.get('sheet'):
@@ -20,7 +23,11 @@ class CreateOneResource(Resource):
 class CreateManyResource(Resource):
 
     def __call__(self, *args, **kwargs):
-        """"""
+        """
+        :param args:
+        :param kwargs:
+        :return:
+        """
         url = self.spreadsheet_id
 
         if kwargs.get('sheet'):

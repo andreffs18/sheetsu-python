@@ -1,10 +1,6 @@
-import logging
-
 from sheetsu.core import (
     ReadResource, SearchResource, CreateOneResource,
     CreateManyResource, UpdateResource, DeleteResource)
-
-logger = logging.getLogger(__name__)
 
 
 class SheetsuClient(object):
@@ -26,9 +22,9 @@ class SheetsuClient(object):
         """https://docs.sheetsu.com/?shell#create"""
         return CreateOneResource(self)(**kwargs)
 
-    def create_many(self, *args):
+    def create_many(self, *args, **kwargs):
         """https://docs.sheetsu.com/?shell#create"""
-        return CreateManyResource(self)(*args)
+        return CreateManyResource(self)(*args, **kwargs)
 
     def update(self, **kwargs):
         """https://docs.sheetsu.com/?shell#update"""
