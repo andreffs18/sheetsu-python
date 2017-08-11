@@ -2,6 +2,8 @@
 # sheetsu-python
 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e5920ae6792c4922b68089a32f993d59)](https://www.codacy.com/app/andreffs18/sheetsu-node?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreffs18/sheetsu-node&amp;utm_campaign=Badge_Grade)
+
 ## Installation
 
 You can start by cloning this repo:
