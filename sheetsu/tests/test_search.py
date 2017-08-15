@@ -25,7 +25,7 @@ class SheetsuApiSearchTestCase(TestCase):
         ]))
 
         client = SheetsuClient(**self.kwargs)
-        response = client.search(sheet="Sheet", limit=1, offset=0,
+        response = client.search(sheet="Sheet", limit=1, offset=1,
                                  ignore_case=True, name="peter")
         self.assertEqual(response, [
             {'id': '1', 'name': 'Peter', 'score': '123'}
