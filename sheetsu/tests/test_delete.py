@@ -17,3 +17,28 @@ class SheetsuApiDeleteTestCase(TestCase):
             "api_secret": "<api_secret>"
         }
 
+    @patch("requests.sessions.Session.request")
+    def test_delete_success(self, mock):
+        """Ensure that DELETE works properlly """
+        mock.return_value = MagicMock(status_code=200, content=json.dumps([
+            {'id': '5', 'name': 'Stewie', 'score': '72'}
+        ]))
+
+        client = SheetsuClient(**self.kwargs)
+        response = client.delete(column="name", value="Meg")
+        self.assertEqual(response, [
+            {'id': '5', 'name': 'Stewie', 'score': '72'}
+        ])
+
+    @patch("requests.sessions.Session.request")
+    def test_delete_with_sheet_success(self, mock):
+        """Ensure that DELETE works properlly """
+        mock.return_value = MagicMock(status_code=200, content=json.dumps([
+            {'id': '5', 'name': 'Stewie', 'score': '72'}
+        ]))
+
+        client = SheetsuClient(**self.kwargs)
+        response = client.delete(sheet="Sheet1", column="name", value="Meg")
+        self.assertEqual(response, [
+            {'id': '5', 'name': 'Stewie', 'score': '72'}
+        ])

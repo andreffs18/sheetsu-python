@@ -19,8 +19,8 @@ class SearchResource(Resource):
             data.update({'offset': kwargs.pop('offset')})
 
         if kwargs.get('ignore_case'):
-            kwargs.pop('ignore_case')
-            data.update({'ignore_case': "true"})
+            ignore_case = kwargs.pop('ignore_case')
+            data.update({'ignore_case': ignore_case in ["True", "true", True]})
 
         url = self.spreadsheet_id
         if kwargs.get('sheet'):
