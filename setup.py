@@ -8,6 +8,7 @@ setup(
     author='Andre Silva',
     author_email='andreffs18@gmail.com',
     license='MIT',
+    keywords='sheetsu api client sdk spreadsheet',
     packages=['sheetsu'],
     zip_safe=False
 )
