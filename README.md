@@ -1,8 +1,8 @@
 
 # sheetsu-python
 
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e5920ae6792c4922b68089a32f993d59)](https://www.codacy.com/app/andreffs18/sheetsu-node?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreffs18/sheetsu-node&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0042777a1e2d4c46b97e697e2c5523cf)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andreffs18/sheetsu-python&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/0042777a1e2d4c46b97e697e2c5523cf)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=andreffs18/sheetsu-python&utm_campaign=Badge_Coverage)
 
 ## Installation
 
