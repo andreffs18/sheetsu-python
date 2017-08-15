@@ -7,17 +7,9 @@
 
 ## Installation
 
-You can start by cloning this repo:
+You can simply do
 ```
-$ git clone 
-$ mkvirtualenv sheetsu --python=python3
-$ pip install -r requirements.txt
-```
-
-Or simply do:
-
-```
-$ pip install sheetsu-python
+$ pip install sheetsu
 ```
 
 ## Usage
@@ -113,6 +105,15 @@ print(client.delete(column="name", value="Peter"))
 ````
 
 ## Development
+
+
+Start by cloning this repo:
+
+```
+$ git clone 
+$ mkvirtualenv sheetsu --python=python3
+[sheetsu] $ pip install -r requirements.txt
+```
 
 Run all tests and generate coverage report
 
