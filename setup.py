@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='sheetsu',
@@ -9,6 +9,6 @@ setup(
     author_email='andreffs18@gmail.com',
     license='MIT',
     keywords='sheetsu api client sdk spreadsheet',
-    packages=['sheetsu'],
+    packages=find_packages(),
     zip_safe=False
 )
