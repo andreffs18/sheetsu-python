@@ -1,4 +1,9 @@
-from urllib.parse import urlencode, quote_plus
+try:
+    # for python 3.x
+    from urllib.parse import urlencode
+except ImportError:
+    # for python 2.x
+    from urllib import urlencode
 
 from .core import Resource
 
@@ -27,8 +32,8 @@ class SearchResource(Resource):
             url += "/sheets/" + kwargs.pop('sheet')
 
         url += "/search"
-        url += "?" + urlencode(data, quote_via=quote_plus)
-        url += "&" + urlencode(kwargs, quote_via=quote_plus)
+        url += "?" + urlencode(data)
+        url += "&" + urlencode(kwargs)
 
         payload = dict(url=url, method="get")
         return super(SearchResource, self).__call__(**payload)

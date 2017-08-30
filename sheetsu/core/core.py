@@ -1,3 +1,4 @@
+import sys
 import json
 import requests
 from requests.auth import HTTPBasicAuth
@@ -5,7 +6,12 @@ from requests.auth import HTTPBasicAuth
 from sheetsu.exceptions import UnknownRequestMethod
 
 import logging
-logger = logging.getLogger("core" + __name__)
+logger = logging.getLogger('sheetsu.' + __name__)
+formatter = logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s')
+logger.setLevel(logging.ERROR)  # ex: DEBUG ERROR
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setFormatter(formatter)
+logger.addHandler(stream_handler)
 
 
 class Resource(object):
