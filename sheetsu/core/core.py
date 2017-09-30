@@ -57,8 +57,7 @@ class Resource(object):
         logger.debug("--{}-- {} with data {}"
                      "".format(method.upper(), url, kwargs.get('data')))
         r = func(url, **kwargs)
-
-        if r.status_code not in [200]:
+        if str(r.status_code)[0] != "2":
             logger.error("Error({}): {} for url {}"
                          "".format(r.status_code, r.text, url))
             return
