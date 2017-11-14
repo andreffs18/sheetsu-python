@@ -41,16 +41,16 @@ More information can be found [here](https://docs.sheetsu.com/#read)
 
 ```python
 # Read all available rows from default sheet
-print(client.read())
+client.read()
 
 # Read only first two 2 rows
-print(client.read(limit=2))
+client.read(limit=2)
 
 # Read only 2 rows, starting from the 3'rd
-print(client.read(limit=2, offset=2))
+client.read(limit=2, offset=2)
 
 # Read 3 rows from "Sheet2"
-print(client.read(sheet="Sheet2", limit=3))
+client.read(sheet="Sheet2", limit=3)
 ```
 
 
@@ -60,13 +60,13 @@ More information can be found [here](https://docs.sheetsu.com/#search-spreadshee
 
 ```python
 # Search on default sheet for all names
-print(client.search(name="*"))
+client.search(name="*")
 
 # Search on default sheet for score = 42, but return only the first result 
-print(client.search(score=42, limit=1))
+client.search(score=42, limit=1)
 
 # Search on "Sheet2" for name "User", but ignore casing
-print(client.search(sheet="Sheet2", name="User", ignore_case=True))
+client.search(sheet="Sheet2", name="User", ignore_case=True)
 
 ```
 
@@ -77,10 +77,10 @@ More information can be found [here](https://docs.sheetsu.com/#create)
 
 ```python
 # Create a new entry on default sheet
-print(client.create_one(name="New User", score=0))
+client.create_one(name="New User", score=0)
 
 # Create two new entries on sheet "Sheet2"
-print(client.create_many(sheet="Sheet2", *[dict(name="onename"), dict(name="othername")]))
+client.create_many(sheet="Sheet2", *[dict(name="onename"), dict(name="othername")])
 
 ```
 
@@ -92,7 +92,7 @@ More information can be found [here](https://docs.sheetsu.com/#update)
 
 ````python
 # Update on default sheet, "Peter's" score to 120
-print(client.update(column="name", value="Peter", data=dict(score=120)))
+client.update(column="name", value="Peter", data=dict(score=120))
 ````
 
 ### Delete 
@@ -101,7 +101,7 @@ More information can be found [here](https://docs.sheetsu.com/#delete)
 
 ````python
 # Delete "Peter" user from default sheet
-print(client.delete(column="name", value="Peter"))
+client.delete(column="name", value="Peter")
 ````
 
 ## Development
