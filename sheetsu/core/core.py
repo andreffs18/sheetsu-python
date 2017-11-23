@@ -1,6 +1,7 @@
 import sys
 import json
 import requests
+import re
 from requests.auth import HTTPBasicAuth
 
 from sheetsu.exceptions import UnknownRequestMethod
@@ -19,7 +20,7 @@ class Resource(object):
     def __init__(self, client):
         """Initialize Sheetsu Resource variables
         :param client: "SheetsuClient" object instance"""
-        self.sheetsu_api_url = "https://sheetsu.com/apis/v1.0/"
+        self.sheetsu_api_url = "https://sheetsu.com/apis/v1.0oy/"
         self.api_key = client.api_key
         self.api_secret = client.api_secret
         self.spreadsheet_id = client.spreadsheet_id
@@ -31,7 +32,14 @@ class Resource(object):
         :param data: optional, only for 'post' and 'put'
         :return: requests instance"""
         # build url to make request
-        url = "{}{}".format(self.sheetsu_api_url, kwargs.pop('url'))
+
+        url = kwargs.pop('url')
+        result = re.search(r"sheetsu.com/apis/v1", url)
+        if bool(result):
+            url = "{}".format(url)
+        else:
+            url = "{}{}".format(self.sheetsu_api_url, url)
+
         # decide which HTTP request to make
         method = kwargs.pop('method')
         if method == 'get':
