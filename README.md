@@ -129,6 +129,9 @@ Bug, issues or features are welcome in this project. Feel free to open an issue 
 
 ## Changes
 
+##### v1.0.0
+* Update sheetsu api url.
+
 ##### v0.0.6
 * Fixed status code verification to allow all "2*" codes. 
 
