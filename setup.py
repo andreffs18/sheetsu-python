@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='sheetsu',
-    version='1.0.0',
+    version='1.0.1',
     description='Sheetsu Python client',
     url='http://github.com/andreffs18/sheetsu-python',
     author='Andre Silva',
