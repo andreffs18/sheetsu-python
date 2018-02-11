@@ -70,4 +70,7 @@ class Resource(object):
                          "".format(r.status_code, r.text, url))
             return
 
-        return json.loads(r.content)
+        if method == 'delete':
+            return None
+        else:
+            return json.loads(r.content)
