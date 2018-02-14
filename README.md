@@ -100,8 +100,11 @@ client.update(column="name", value="Peter", data=dict(score=120))
 More information can be found [here](https://docs.sheetsu.com/#delete)
 
 ````python
-# Delete "Peter" user from default sheet
+# Delete "Peter" user from default sheet (but leave empty row)
 client.delete(column="name", value="Peter")
+
+# Delete "Susan" user from default sheet, and remove row (moving later rows up)
+client.delete(column="name", value="Susan", destroy="true")
 ````
 
 ## Development
