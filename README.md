@@ -131,17 +131,30 @@ Bug, issues or features are welcome in this project. Feel free to open an issue 
 
 
 ## Changes
+##### [v1.1.0](https://github.com/andreffs18/sheetsu-python/releases/tag/v1.1.0)
+###### Added
+* Destroy functionality to delete resource
 
 ##### [v1.0.0](https://github.com/andreffs18/sheetsu-python/releases/tag/v1.0.0)
-* Update sheetsu api url.
+###### Changed
+* Update on Sheetsu api url.
 
 ##### v0.0.6
-* Fixed status code verification to allow all "2*" codes. 
+###### Fixed
+* Status code verification to allow all "2*" codes. 
 
 ##### v0.0.2
-* Added tests to all available _Resources_.
+###### Added
+* Tests to all available _Resources_.
 
 ##### v0.0.1
 * Initial working version.
 
-
+<!--
+Added for new features.
+Changed for changes in existing functionality.
+Deprecated for soon-to-be removed features.
+Removed for now removed features.
+Fixed for any bug fixes.
+Security in case of vulnerabilities.
+-->
