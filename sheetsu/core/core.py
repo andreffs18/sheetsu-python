@@ -4,7 +4,7 @@ import requests
 import re
 from requests.auth import HTTPBasicAuth
 
-from sheetsu.exceptions import UnknownRequestMethod
+from sheetsu.exceptions import UnknownRequestMethod, UnexpectedResponseCode
 
 import logging
 logger = logging.getLogger('sheetsu.' + __name__)
@@ -70,7 +70,11 @@ class Resource(object):
                          "".format(r.status_code, r.text, url))
             return
 
-        if method == 'delete':
-            return None
+        if method == 'delete' and len(kwargs['data']) == 0:
+            ## this is a "clear"-style delete - no return data is expected
+            if r.status_code == 204: # success
+                return None
+            else:
+                raise UnexpectedResponseCode
         else:
             return json.loads(r.content)
